@@ -1,5 +1,6 @@
 '''
-Executables, Photos, Videos, Mp3, zip, pdf
+Gonna write something later
+
 '''
 
 import os
@@ -19,6 +20,8 @@ def scanner():
         ".msi": "DiskImage",
         '.docx': "Documents",
         ".doc": "Documents",
+        ".pptx": "Presentations",
+        ".ppt": "Presentations",
         ".mp4": "Videos",
         ".mp3": "Audio",
         ".zip": "ZIP",
@@ -43,8 +46,8 @@ def scanner():
             split = os.path.splitext(file.name)
             # print(split)
             source = os.path.join(source_dir, file.name)
-            if split[1] in items:
-                dest = os.path.join(source_dir, items[split[1]], file.name)
+            if split[1].lower() in items:
+                dest = os.path.join(source_dir, items[split[1].lower()], file.name)
                 shutil.move(source, dest)
 
             # Remove empty directories
